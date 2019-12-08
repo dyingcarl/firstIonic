@@ -7,6 +7,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab2Page {
   inputTxt="";
+  inputsize=0;
   constructor(public alertController: AlertController) {}
 
   async presentAlert() {
@@ -14,11 +15,15 @@ export class Tab2Page {
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Subtitle',
-      message: this.inputTxt + '. The length of input text is ' + this.inputTxt.length + '.',
+      message: this.inputTxt + '. The length of input text is ' + this.inputsize + '.',
       buttons: ['OK']
     });
 
     await alert.present();
+  }
+
+  updateLength(){
+    this.inputsize = this.inputTxt.length;
   }
 }
 
