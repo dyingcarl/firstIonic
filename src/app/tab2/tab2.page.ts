@@ -14,7 +14,7 @@ export class Tab2Page {
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Subtitle',
-      message: this.inputTxt,
+      message: this.inputTxt + this.inputTxt.length,
       buttons: ['OK']
     });
 
