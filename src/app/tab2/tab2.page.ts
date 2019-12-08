@@ -6,20 +6,27 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
+  inputTxt="";
   constructor(public alertController: AlertController) {}
 
   async presentAlert() {
+    //this.inputTxt = "expression";
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Subtitle',
-      message: 'This is an alert message.',
+      message: this.inputTxt,
       buttons: ['OK']
     });
 
     await alert.present();
   }
-
-
-
 }
+
+/*@Component({
+  selector: 'custom-input',
+  template: `
+    <button (click)="decrement()">-</button>
+    <span>{{counter}}</span>
+    <button (click)="increment()">+</button>
+  `
+})*/

@@ -7,13 +7,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-input placeholder="Enter Input" class="MainInput"></ion-input>
-
+  <ion-input placeholder="Enter Input" class="MainInput" [(ngModel)]="inputTxt"></ion-input>
+  <p>{{inputTxt}}</p>
 </ion-content>
 
 <ion-footer>
     <ion-toolbar>
-      <ion-title>Footer</ion-title>
+      <ion-title></ion-title>
       <ion-button (click)="presentAlert()" class="AlertButton">Default</ion-button>
     </ion-toolbar>
   </ion-footer>
