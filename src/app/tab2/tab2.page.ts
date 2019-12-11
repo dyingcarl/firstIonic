@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-tab2',
@@ -8,10 +8,13 @@ import { AlertController } from '@ionic/angular';
 export class Tab2Page {
   inputTxt="";
   inputsize=0;
-  constructor(public alertController: AlertController) {}
+  constructor(public alertController: AlertController,
+  private el:ElementRef,
+  private renderer:Renderer2) {}
 
   async presentAlert() {
     //this.inputTxt = "expression";
+    this.renderer.setStyle(this.el.nativeElement, 'background-color', 'red');
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Subtitle',
@@ -24,7 +27,14 @@ export class Tab2Page {
 
   updateLength(){
     this.inputsize = this.inputTxt.length;
+    this.renderer.setStyle(this.el.nativeElement, 'color', 'blue');
   }
+
+  showSize(something:string){
+    return something.length;
+  }
+
+
 }
 
 /*@Component({
