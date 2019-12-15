@@ -1,5 +1,6 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { AlertController, NavController, NavParams } from '@ionic/angular';
+//import { ExtraPagePage } from 'src/app/extra-page/extra-page.page';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -8,13 +9,10 @@ import { AlertController } from '@ionic/angular';
 export class Tab2Page {
   inputTxt="";
   inputsize=0;
-  constructor(public alertController: AlertController,
-  private el:ElementRef,
-  private renderer:Renderer2) {}
+  constructor(public alertController: AlertController, public navCtrl: NavController
+) {}
 
   async presentAlert() {
-    //this.inputTxt = "expression";
-    this.renderer.setStyle(this.el.nativeElement, 'background-color', 'red');
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Subtitle',
@@ -27,21 +25,27 @@ export class Tab2Page {
 
   updateLength(){
     this.inputsize = this.inputTxt.length;
-    this.renderer.setStyle(this.el.nativeElement, 'color', 'blue');
   }
 
   showSize(something:string){
     return something.length;
   }
 
+  pushPage(){
+    this.navCtrl.push(ExtraPagePage,{
+      content: this.inputTxt
+    });
+  }
+
 
 }
 
+
 /*@Component({
-  selector: 'custom-input',
-  template: `
-    <button (click)="decrement()">-</button>
-    <span>{{counter}}</span>
-    <button (click)="increment()">+</button>
-  `
-})*/
+  templateUrl: 'src/app/extra-page/extra-page.page.html',
+})
+class ExtraPagePage {
+  constructor(private navParams: NavParams) {
+     let content = navParams.get('content');
+  }
+}*/
