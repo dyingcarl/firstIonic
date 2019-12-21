@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController, NavParams } from '@ionic/angular';
+import { HTTP } from '@ionic-native/http/ngx';
 //import { ExtraPagePage } from 'src/app/extra-page/extra-page.page';
 @Component({
   selector: 'app-tab2',
@@ -9,7 +10,7 @@ import { AlertController, NavController, NavParams } from '@ionic/angular';
 export class Tab2Page {
   inputTxt="";
   inputsize=0;
-  constructor(public alertController: AlertController, public navCtrl: NavController
+  constructor(public alertController: AlertController, public navCtrl: NavController, private http: HTTP
 ) {}
 
   async presentAlert() {
@@ -25,27 +26,10 @@ export class Tab2Page {
 
   updateLength(){
     this.inputsize = this.inputTxt.length;
+    console.log('aaa');
   }
 
   showSize(something:string){
     return something.length;
   }
-
-  pushPage(){
-    this.navCtrl.push(ExtraPagePage,{
-      content: this.inputTxt
-    });
-  }
-
-
 }
-
-
-/*@Component({
-  templateUrl: 'src/app/extra-page/extra-page.page.html',
-})
-class ExtraPagePage {
-  constructor(private navParams: NavParams) {
-     let content = navParams.get('content');
-  }
-}*/
