@@ -11,17 +11,12 @@ import { AppComponent } from './app.component';
 
 import { ExtraPagePage } from './extra-page/extra-page.page'
 
-import { UserService } from 'src/services/user.service';
-import { BaseService } from 'src/services/base.service';
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
-    UserService,
-    BaseService,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

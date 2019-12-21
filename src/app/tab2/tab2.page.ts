@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController, NavParams } from '@ionic/angular';
-import { ExtraPagePage } from 'src/app/extra-page/extra-page.page';
+//import { ExtraPagePage } from 'src/app/extra-page/extra-page.page';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -32,9 +32,9 @@ export class Tab2Page {
   }
 
   pushPage(){
-    //this.navCtrl.navigateForward(ExtraPagePage,{
-    //  content: this.inputTxt
-    //});
+    this.navCtrl.push(ExtraPagePage,{
+      content: this.inputTxt
+    });
   }
 
 
