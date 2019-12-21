@@ -8,11 +8,7 @@
 
 <ion-content>
   <ion-input type="text" placeholder="Enter Input" class="MainInput" [(ngModel)]="inputTxt" (ionChange)="updateLength()"></ion-input>
-  <span>The length of input text is </span><span (ionChange)="sizeChange()"
-  [ngClass]="{
-    'beGreen': inputsize>6,
-    'beRed': inputsize<3
-  }">{{showSize(inputTxt)}}</span>
+  <span>The length of input text is </span><span>{{inputsize}}</span>
 </ion-content>
 
 <ion-footer>

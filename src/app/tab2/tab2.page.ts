@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController, NavParams } from '@ionic/angular';
-import { HTTP } from '@ionic-native/http/ngx';
-//import { ExtraPagePage } from 'src/app/extra-page/extra-page.page';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -10,10 +8,10 @@ import { HTTP } from '@ionic-native/http/ngx';
 export class Tab2Page {
   inputTxt="";
   inputsize=0;
-  constructor(public alertController: AlertController, public navCtrl: NavController, private http: HTTP
-) {}
+  constructor(public alertController: AlertController) {}
 
   async presentAlert() {
+    //this.inputTxt = "expression";
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Subtitle',
