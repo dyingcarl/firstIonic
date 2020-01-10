@@ -1,24 +1,28 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Photo Gallery
+      Choose A Perfect Color While Trying!
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-input type="text" placeholder="Enter Input" class="MainInput" [(ngModel)]="inputTxt" (ionChange)="updateLength()"></ion-input>
-  <span>The length of input text is </span><span (ionChange)="sizeChange()"
+  <ion-input type="text" placeholder="Enter Input" class="MainInput"
+  [(ngModel)]="inputTxt" (ionChange)="updateLength()" [ngStyle]="{'color': costumeColor}"></ion-input>
+  <span [ngStyle]="{'background-color': costumeColor}">The length of input text is </span><span (ionChange)="sizeChange()"
   [ngClass]="{
     'beGreen': inputsize>6,
     'beRed': inputsize<3
-  }">{{showSize(inputTxt)}}</span>
+  }" >{{showSize(inputTxt)}}</span>
 </ion-content>
 
 <ion-footer>
     <ion-toolbar>
       <ion-title></ion-title>
-      <ion-button (click)="presentAlert()" class="AlertButton">Default</ion-button>
-      <ion-button (click)="pushPage()">GoExtra</ion-button>
+      <ion-button (click)="presentAlert()" (press)="onPress()" (pressup)="onPressUp()" class="AlertButton">Default</ion-button>
+      <ion-button (press)="onPressR()" (pressup)="onPressUpR()">SUN!</ion-button>
+      <ion-button (press)="onPressG()" (pressup)="onPressUpG()">EARTH!</ion-button>
+      <ion-button (press)="onPressB()" (pressup)="onPressUpB()">SEA!</ion-button>
+      <ion-button (click)="resetColor()">NO!</ion-button>
     </ion-toolbar>
   </ion-footer>
