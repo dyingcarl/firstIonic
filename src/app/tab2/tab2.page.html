@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar  color="primary">
     <ion-title>
       Choose A Perfect Color While Trying!
     </ion-title>
@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-input type="text" placeholder="Enter Input" class="MainInput"
+  <ion-input type="text" placeholder="Type something here to preview" class="MainInput"
   [(ngModel)]="inputTxt" (ionChange)="updateLength()"></ion-input>
   <span>The color you are having right now is </span><span [ngStyle]="{'color': costumeColor}"
   [ngClass]="{

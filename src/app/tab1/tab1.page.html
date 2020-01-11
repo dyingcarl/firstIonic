@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title [ngStyle]="{'background-color': costumeColor}">
+  <ion-toolbar  color="primary">
+    <ion-title>
       Color Sniper
     </ion-title>
   </ion-toolbar>
@@ -16,6 +16,10 @@
       <p>View a color by directly feeding decimal RGB values.</p>
     </ion-card-content>
   </ion-card>
+
+  <div [ngStyle]="{'background-color': costumeColor}" class="displayColor">
+
+    </div>
 </ion-content>
 <ion-footer>
   <ion-list>

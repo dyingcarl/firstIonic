@@ -6,10 +6,8 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  {
-    path: 'extra-page',
-    loadChildren: () => import('./extra-page/extra-page.module').then( m => m.ExtraPagePageModule)
-  }
+  { path: 'movies', loadChildren: './tab3/tab3.module#Tab3PageModule' },
+  { path: 'movies/:id', loadChildren: './extra-page/extra-page.module#ExtraPagePageModule' }
 ];
 @NgModule({
   imports: [
