@@ -8,21 +8,48 @@
 
 <ion-content>
   <ion-input type="text" placeholder="Enter Input" class="MainInput"
-  [(ngModel)]="inputTxt" (ionChange)="updateLength()" [ngStyle]="{'color': costumeColor}"></ion-input>
-  <span [ngStyle]="{'background-color': costumeColor}">The length of input text is </span><span (ionChange)="sizeChange()"
+  [(ngModel)]="inputTxt" (ionChange)="updateLength()"></ion-input>
+  <span>The color you are having right now is </span><span [ngStyle]="{'color': costumeColor}"
   [ngClass]="{
-    'beGreen': inputsize>6,
-    'beRed': inputsize<3
-  }" >{{showSize(inputTxt)}}</span>
+    'altStyleA': redVal+greenVal+blueVal<500,
+    'altStyleB': redVal+greenVal+blueVal>499
+  }" >{{displayTxt}}</span>
 </ion-content>
 
 <ion-footer>
     <ion-toolbar>
-      <ion-title></ion-title>
-      <ion-button (click)="presentAlert()" (press)="onPress()" (pressup)="onPressUp()" class="AlertButton">Default</ion-button>
-      <ion-button (press)="onPressR()" (pressup)="onPressUpR()">SUN!</ion-button>
-      <ion-button (press)="onPressG()" (pressup)="onPressUpG()">EARTH!</ion-button>
-      <ion-button (press)="onPressB()" (pressup)="onPressUpB()">SEA!</ion-button>
-      <ion-button (click)="resetColor()">NO!</ion-button>
+      <ion-title>Press options below to change color</ion-title>
+      <ion-list>
+        <ion-item>
+          <ion-button (press)="onPressR()" (pressup)="onPressUpR()" shape="round" fill="outline" color="danger">
+            <ion-icon size="small" slot="start" name="sunny"></ion-icon>
+            I want more red in there
+          </ion-button>
+        </ion-item>
+
+        <ion-item>
+          <ion-button (press)="onPressG()" (pressup)="onPressUpG()" shape="round" fill="outline" color="success">
+            <ion-icon size="small" slot="start" name="leaf"></ion-icon>
+            More green should be good</ion-button>
+        </ion-item>
+
+        <ion-item>
+          <ion-button (press)="onPressB()" (pressup)="onPressUpB()" shape="round" fill="outline" color="primary">
+            <ion-icon size="small" slot="start" name="rainy"></ion-icon>
+            Blue might be helpful here</ion-button>
+        </ion-item>
+
+        <ion-item>
+          <ion-button (click)="resetColor()" shape="round" fill="outline" color="dark">
+            <ion-icon name="color-fill"></ion-icon>
+            NO! I want to start again</ion-button>
+        </ion-item>
+
+        <ion-item>
+          <ion-button (click)="presentAlert()">I'm good with this one</ion-button>
+        </ion-item>
+      </ion-list>
+
+
     </ion-toolbar>
   </ion-footer>

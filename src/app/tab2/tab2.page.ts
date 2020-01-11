@@ -6,14 +6,6 @@ import * as _ from 'lodash';
 
 @Component({
   selector: 'app-tab2',
-  /*template: `
-      <ul *ngIf="courses$ | async as courses else noData">
-          <li *ngFor="let course of courses">
-              {{course.description}}
-          </li>
-      </ul>
-      <ng-template #noData>No Data Available</ng-template>
-  `,*/
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
@@ -24,7 +16,8 @@ export class Tab2Page implements OnInit {
   redVal=255;
   greenVal=255;
   blueVal=255;
-  costumeColor="#ffffff";
+  costumeColor="#FFFFFF";
+  displayTxt="#FFFFFF";
   colorChangeSpeed=1;
 
   public progress: number = 0;
@@ -39,10 +32,11 @@ export class Tab2Page implements OnInit {
   async presentAlert() {
     //this.inputTxt = "expression";
     const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: this.inputTxt + '. The length of input text is ' + this.inputsize + '.',
-      buttons: ['OK']
+      header: 'Tah-da!',
+      subHeader: 'Are you satisfied with your choice?',
+      message: 'The color you made has its code as ' + this.costumeColor + '.',
+      buttons: ['OK'],
+      
     });
 
     await alert.present();
@@ -50,9 +44,12 @@ export class Tab2Page implements OnInit {
 
   updateLength(){
     this.inputsize = this.inputTxt.length;
-    //this.http.get(this.FetchingUrl).subscribe((response) => {
-    //    console.log(response);
-    //});
+    if(this.inputsize>0){
+      this.displayTxt = this.inputTxt;
+    }
+    else{
+      this.displayTxt = this.costumeColor;
+    }
   }
 
   showSize(something:string){
@@ -60,14 +57,9 @@ export class Tab2Page implements OnInit {
   }
 
   ngOnInit() {
-        /*this.courses$ = this.http
-            .get<Course[]>("/courses.json")
-            .map(data => _.values(data))
-            .do(console.log);*/
-        //this.courses$ = this.http.get(this.FetchingUrl);
-        console.log("Ah start");
-        console.log(this.http.get(this.FetchingUrl));
-        console.log("Ah end");
+        //console.log("Ah start");
+        //console.log(this.http.get(this.FetchingUrl));
+        //console.log("Ah end");
   }
 
   toHex(d) {
@@ -77,21 +69,18 @@ export class Tab2Page implements OnInit {
   addRed(power){
     this.blueVal = (this.blueVal<power)?0 : this.blueVal-power;
     this.greenVal = (this.greenVal<power)?0 : this.greenVal-power;
-    //this.redVal = (this.redVal<25)?0 : this.redVal-25;
     this.updateColor();
   }
 
   addBlue(power){
     this.greenVal = (this.greenVal<power)?0 : this.greenVal-power;
     this.redVal = (this.redVal<power)?0 : this.redVal-power;
-    //this.blueVal = (this.blueVal<25)?0 : this.blueVal-25;
     this.updateColor();
   }
 
   addGreen(power){
     this.redVal = (this.redVal<power)?0 : this.redVal-power;
     this.blueVal = (this.blueVal<power)?0 : this.blueVal-power;
-    //this.greenVal = (this.greenVal<25)?0 : this.greenVal-25;
     this.updateColor();
   }
 
